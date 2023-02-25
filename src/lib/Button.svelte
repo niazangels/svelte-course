@@ -7,13 +7,14 @@
 	let isLeftHovered;
 </script>
 
-<!-- <button class={size === 'large' ? 'size-lg' : 'size-sm'}><slot /></button> -->
 <button
+	on:click|preventDefault|stopPropagation
 	style:--buttonBgColor={bgColor}
 	style:--buttonColor={color}
 	class:size-lg={size === 'large'}
 	class:size-sm={size != 'large'}
 	class:shadow
+	{...$$restProps}
 >
 	<div
 		class="left-content"
@@ -52,6 +53,10 @@
 		}
 		&.shadow {
 			box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+		}
+		&:disabled {
+			opacity: 0.3;
+			cursor: not-allowed;
 		}
 		.left-content {
 			margin-right: 10px;
