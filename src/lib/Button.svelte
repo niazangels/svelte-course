@@ -8,7 +8,6 @@
 </script>
 
 <button
-	on:click|preventDefault|stopPropagation
 	style:--buttonBgColor={bgColor}
 	style:--buttonColor={color}
 	class:size-lg={size === 'large'}
@@ -16,15 +15,15 @@
 	class:shadow
 	{...$$restProps}
 >
-	<div
-		class="left-content"
-		on:mouseenter={() => (isLeftHovered = true)}
-		on:mouseleave={() => (isLeftHovered = false)}
-	>
-		{#if $$slots.leftContent}
+	{#if $$slots.leftContent}
+		<div
+			class="left-content"
+			on:mouseenter={() => (isLeftHovered = true)}
+			on:mouseleave={() => (isLeftHovered = false)}
+		>
 			<slot name="leftContent" />
-		{/if}
-	</div>
+		</div>
+	{/if}
 	<slot {isLeftHovered} />
 </button>
 
